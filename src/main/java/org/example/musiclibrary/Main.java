@@ -1,17 +1,27 @@
-package org.example;
-
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+package org.example.musiclibrary;
+import org.example.musiclibrary.model.*;
+import org.example.musiclibrary.service.*;
+import org.example.musiclibrary.exception.*;
 public class Main {
-    static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
-
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
-        }
-    }
-}
+    public static void main(String[] args) {
+        MediaService mediaService = new MediaService();
+        SongService songService = new SongService(mediaService);
+        PodcastService podcastService = new PodcastService(mediaService);
+        PlaylistService playlistService = new PlaylistService();
+        System.out.println("=== CREATE MEDIA ===");
+        Song s1 = songService.create(new Song(10, "Bohemian Rhapsody", 354, "queen")
+        );
+        Podcast p1 = new Podcast(11, "Java Podcast", 1800, "Bob");
+        int songId = s1.getId();
+        int podcastId = p1.getId();
+        System.out.println("Song id = " + songId);
+        System.out.println("Podcast id = " + podcastId);
+        Media m = mediaService.getById(songId);
+        Song updatedSong =new Song(10, "Bohemian Rhapsody (Remastered)", 360, "queen");
+        songService.update(songId, updatedSong);
+        Playlist playlist = new Playlist(1, "My Favorites");
+        playlistService.addMediaToPlaylist(playlist, songService.getById(songId)
+        );
+        playlistService.addMediaToPlaylist(  playlist,  podcastService.getById(podcastId)
+        );
+        podcastService.delete(podcastId);     }}
