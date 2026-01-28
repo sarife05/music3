@@ -9,8 +9,8 @@ import java.util.List;
 
 public class PodcastRepository {
 
-    // CREATE
-    public void create(Podcast podcast) throws SQLException {
+
+    public Podcast create(Podcast podcast) throws SQLException {
         String sql = "INSERT INTO podcasts (id, name, duration, host) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = DatabaseConnection.getConnection();
@@ -22,7 +22,7 @@ public class PodcastRepository {
             ps.setString(4, podcast.getCreator());  // корректный getter
 
             ps.executeUpdate();
-        }
+        } return podcast;
     }
 
     // GET ALL
