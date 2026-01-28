@@ -9,8 +9,7 @@ import java.util.List;
 
 public class SongRepository {
 
-    // CREATE
-    public void create(Song song) throws SQLException {
+    public Song create(Song song) throws SQLException {
         String sql = "INSERT INTO songs (id, name, duration, artist) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = DatabaseConnection.getConnection();
@@ -22,7 +21,7 @@ public class SongRepository {
             ps.setString(4, song.getCreator());  // использован корректный getter
 
             ps.executeUpdate();
-        }
+        } return song;
     }
 
     // GET ALL
