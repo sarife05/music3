@@ -108,4 +108,7 @@ Better error handling
 Scalable architecture for future extensions
 
 [music.pdf](https://github.com/user-attachments/files/24837190/music.pdf)
+<img width="1280" height="800" alt="Снимок экрана 2026-01-28 в 13 25 33" src="https://github.com/user-attachments/assets/021f0131-3c76-4d25-b823-8b8180a82763" />
+
+<img width="1280" height="800" alt="Снимок экрана 2026-01-28 в 13 25 37" src="https://github.com/user-attachments/assets/98b0c921-071c-4884-9596-ab876c70b6ab" />
 
