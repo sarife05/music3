@@ -1,7 +1,13 @@
 package org.example.musiclibrary.exception;
 
-public class DatabaseOperationException extends RuntimeException {
-  public DatabaseOperationException(String message, Throwable cause) {
-    super(message, cause);
-  }
+/**
+ * Exception thrown when a database operation fails.
+ * Wraps SQLException and provides context about the operation.
+ */
+public class DatabaseOperationException extends Exception {
+
+    public DatabaseOperationException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
 }
